@@ -1,21 +1,23 @@
-public class Vehiculo {
+package model;
+
+public class Vehicle {
 
     //Propiedades
     private final String referencia;
-    private final String velocidadMaxima;
+    private final double velocidadMaxima;
     private final Color color;
 
     //constructor
-    public Vehiculo(String referencia, String velocidadMaxima, Color color) {
+    public Vehicle(String referencia, double velocidadMaxima, Color color) {
         this.referencia = referencia;
         this.velocidadMaxima = velocidadMaxima;
         this.color = color;
     }
 
-    public Vehiculo(Vehiculo vehiculo){
-        this.referencia = vehiculo.getReferencia();
-        this.velocidadMaxima = vehiculo.getVelocidadMaxima();
-        this.color = vehiculo.getColor();
+    public Vehicle(Vehicle vehicle){
+        this.referencia = vehicle.getReferencia();
+        this.velocidadMaxima = vehicle.getVelocidadMaxima();
+        this.color = vehicle.getColor();
     }
 
     //getters
@@ -23,7 +25,7 @@ public class Vehiculo {
         return referencia;
     }
 
-    public String getVelocidadMaxima() {
+    public double getVelocidadMaxima() {
         return velocidadMaxima;
     }
 
@@ -36,6 +38,6 @@ public class Vehiculo {
     public String toString() {
         return "Referencia: " + referencia +
                 " Velocidad Maxima: " + velocidadMaxima +
-                " Color: " + color;
+                " model.Color: " + color;
     }
 }

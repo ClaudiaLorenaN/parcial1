@@ -1,16 +1,18 @@
-public class Carro extends Vehiculo {
+package model;
+
+public class Car extends Vehicle {
 
     //propiedad
     private final int numeroDePuertas;
 
     //constructor
-    public Carro(String referencia, String velocidadMaxima, int numeroDePuertas, Color color) {
+    public Car(String referencia, double velocidadMaxima, int numeroDePuertas, Color color) {
         super(referencia, velocidadMaxima, color);
         this.numeroDePuertas = numeroDePuertas;
     }
 
-    public Carro(Vehiculo vehiculo, int numeroDePuertas) {
-        super(vehiculo);
+    public Car(Vehicle vehicle, int numeroDePuertas) {
+        super(vehicle);
         this.numeroDePuertas = numeroDePuertas;
     }
 

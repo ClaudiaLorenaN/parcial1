@@ -1,21 +1,25 @@
-public class Avion extends Vehiculo {
+package model;
+
+import java.awt.*;
+
+public class Plane extends Vehicle {
 
     //propiedad
-    private final String altitudMaxima;
+    private final double altitudMaxima;
 
     //constructor
-    public Avion(String referencia, String velocidadMaxima, String altitudMaxima, Color color) {
+    public Plane(String referencia, double velocidadMaxima, double altitudMaxima, Color color) {
         super(referencia, velocidadMaxima, color);
         this.altitudMaxima = altitudMaxima;
     }
 
-    public Avion(Vehiculo vehiculo, String altitudMaxima) {
-        super(vehiculo);
+    public Plane(Vehicle vehicle, double altitudMaxima) {
+        super(vehicle);
         this.altitudMaxima = altitudMaxima;
     }
 
     //getters
-    public String getAltitudMaxima() {
+    public double getAltitudMaxima() {
         return altitudMaxima;
     }
 

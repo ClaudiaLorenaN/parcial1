@@ -1,21 +1,23 @@
-public class Yate extends Vehiculo {
+package model;
+
+public class Boat extends Vehicle {
 
     //propiedad
-    private final int pesoMaximo;
+    private final double pesoMaximo;
 
     //constructor
-    public Yate(String referencia, String velocidadMaxima, int pesoMaximo, Color color) {
+    public Boat(String referencia, double velocidadMaxima, double pesoMaximo, Color color) {
         super(referencia, velocidadMaxima, color);
         this.pesoMaximo = pesoMaximo;
     }
 
-    public Yate(Vehiculo vehiculo, int pesoMaximo) {
-        super(vehiculo);
+    public Boat(Vehicle vehicle, double pesoMaximo) {
+        super(vehicle);
         this.pesoMaximo = pesoMaximo;
     }
 
     //getters
-    public int getPesoMaximo() {
+    public double getPesoMaximo() {
         return pesoMaximo;
     }
 
