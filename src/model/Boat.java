@@ -1,30 +1,37 @@
 package model;
 
-public class Boat extends Vehicle {
+import util.Text;
+
+public class Boat extends Vehicle implements Cloneable{
 
     //propiedad
-    private final double pesoMaximo;
+    private final double maximumWeight;
 
     //constructor
-    public Boat(String referencia, double velocidadMaxima, double pesoMaximo, Color color) {
-        super(referencia, velocidadMaxima, color);
-        this.pesoMaximo = pesoMaximo;
+    public Boat(String reference, double maximumSpeed, double maximumWeight, Color color) {
+        super(reference, maximumSpeed, color);
+        this.maximumWeight = maximumWeight;
     }
 
-    public Boat(Vehicle vehicle, double pesoMaximo) {
+    public Boat(Vehicle vehicle, double maximumWeight) {
         super(vehicle);
-        this.pesoMaximo = pesoMaximo;
+        this.maximumWeight = maximumWeight;
     }
 
     //getters
-    public double getPesoMaximo() {
-        return pesoMaximo;
+    public double getMaximumWeight() {
+        return maximumWeight;
     }
 
     //sobreescritura toString
     @Override
     public String toString() {
         return super.toString() +
-                " Peso máximo: " + pesoMaximo;
+                " " + Text.MAXIMUM_WEIGHT + ":" + " " + maximumWeight;
+    }
+
+    @Override
+    protected Boat clone() {
+        return new Boat(this, this.maximumWeight);
     }
 }

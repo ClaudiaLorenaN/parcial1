@@ -1,30 +1,37 @@
 package model;
 
-public class Car extends Vehicle {
+import util.Text;
+
+public class Car extends Vehicle implements Cloneable{
 
     //propiedad
-    private final int numeroDePuertas;
+    private final int numberGates;
 
     //constructor
-    public Car(String referencia, double velocidadMaxima, int numeroDePuertas, Color color) {
-        super(referencia, velocidadMaxima, color);
-        this.numeroDePuertas = numeroDePuertas;
+    public Car(String reference, double maximumSpeed, int numberGates, Color color) {
+        super(reference, maximumSpeed, color);
+        this.numberGates = numberGates;
     }
 
-    public Car(Vehicle vehicle, int numeroDePuertas) {
+    public Car(Vehicle vehicle, int numberGates) {
         super(vehicle);
-        this.numeroDePuertas = numeroDePuertas;
+        this.numberGates = numberGates;
     }
 
     //getters
-    public int getNumeroDePuertas() {
-        return numeroDePuertas;
+    public int getNumberGates() {
+        return numberGates;
     }
 
     //sobreescritura toString
     @Override
     public String toString() {
-        return super.toString() +
-                " Número de puertas: " + numeroDePuertas;
+        return super.toString() + " " +
+                Text.NUMBER_GATES + ":" + " " + numberGates;
+    }
+
+    @Override
+    protected Car clone() {
+        return new Car(this, this.numberGates);
     }
 }

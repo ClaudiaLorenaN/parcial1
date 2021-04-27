@@ -1,36 +1,33 @@
 package util;
-import model.*;
 import model.Color;
-import util.Menu;
 
 import model.Boat;
 import model.Car;
 import model.Plane;
 import model.Vehicle;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class InformationReceiver {
 
-    private static InformationReceiver instancia;
+    private static InformationReceiver instance;
 
     private InformationReceiver(){
 
     }
 
     public static InformationReceiver getInstance(){
-        if(instancia == null){
-            instancia = new InformationReceiver();
+        if(instance == null){
+            instance = new InformationReceiver();
         }
-        return instancia;
+        return instance;
     }
 
 
     private static final Scanner scanner = new Scanner(System.in);
 
     public static Vehicle createInformationVehicle(){
-        System.out.println("Ingrese el color del vehiculo");
+        System.out.println(Text.ADD_COLOR_VEHICLE);
         int option = 0;
         Color color = null;
 
@@ -41,34 +38,41 @@ public class InformationReceiver {
 
         }while (color ==null);
 
-        System.out.println("Ingrese la referencia del vehiculo");
-        String referencia = scanner.nextLine();
-        double velocidadMaxima = Validator.validateDouble("Ingrese la velocidad máxima del vehiculo");
-        return new Vehicle(referencia, velocidadMaxima, Color.NEGRO);
+        System.out.println(Text.ADD_REFERENCE_VEHICLE);
+        String reference = scanner.nextLine();
+        double speedMaximum = Validator.validateDouble(Text.ADD_MAXIMUM_SPEED_VEHICLE);
+
+        Vehicle vehicle = Vehicle.builder()
+                .reference(reference)
+                .maximumSpeed(speedMaximum)
+                .color(color)
+                .build();
+
+        return vehicle;
 
     }
 
     public static Plane createPlane(){
-        System.out.println("Ingrese la información del avión");
+        System.out.println(Text.ADD_INFO_PLANE);
         Vehicle vehicle = createInformationVehicle();
-        double altitudMaxima = Validator.validateDouble("Ingrese la altitud máxima");
+        double altitudMaxima = Validator.validateDouble(Text.ADD_MAXIMUM_ALTITUDE);
         return new Plane(vehicle, altitudMaxima);
 
     }
 
     public static Boat createBoat(){
-        System.out.println("Ingrese la información del yate");
+        System.out.println(Text.ADD_INFO_BOAT);
         Vehicle vehicle = createInformationVehicle();
-        double pesoMaximo = Validator.validateDouble("Ingrese el peso máximo");
-        return new Boat(vehicle, pesoMaximo);
+        double maximumWeight = Validator.validateDouble(Text.ADD_MAXIMUM_WEIGHT);
+        return new Boat(vehicle, maximumWeight);
 
     }
 
     public static Car createCar(){
-        System.out.println("Ingrese la información del carro");
+        System.out.println(Text.ADD_INFO_CAR);
         Vehicle vehicle = createInformationVehicle();
-        int numeroDePuertas = Validator.validateInt("Ingrese el numero de puertas");
-        return new Car(vehicle,numeroDePuertas);
+        int numberGates = Validator.validateInt(Text.ADD_NUMBER_GATES);
+        return new Car(vehicle,numberGates);
     }
 
 
@@ -82,10 +86,10 @@ public class InformationReceiver {
             case 3:
                 return createCar();
             case 4:
-                System.out.println("Saliendo de la opción de agregado");
+                System.out.println(Text.EXIT_OPTION_ADD);
                 return null;
             default:
-                System.out.println("Opción no válida");
+                System.out.println(Text.INVALID_OPTION);
                 return null;
         }
 
@@ -106,7 +110,7 @@ public class InformationReceiver {
             case 5:
                 return Color.GRIS;
             default:
-                System.out.println("Opción no válida");
+                System.out.println(Text.INVALID_OPTION);
                 return null;
         }
     }

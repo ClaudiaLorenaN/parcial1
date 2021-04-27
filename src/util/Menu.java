@@ -9,14 +9,14 @@ public class Menu {
 
     public void showMenu(){
 
-        System.out.println("Bienvenido al garaje");
-        System.out.println("Escoge una de las siguientes opciones");
-        System.out.println("1. Agregar vehículo");
-        System.out.println("2. Mostrar garaje");
-        System.out.println("3. Salir");
+        System.out.println(Text.WELCOME_GARAGE);
+        System.out.println(Text.CHOOSE_OPTION);
+        System.out.println(Text.NUMBER_ONE + " " + Text.ADD_VEHICLE);
+        System.out.println(Text.NUMBER_TWO + " " + Text.SHOW_GARAGE);
+        System.out.println(Text.NUMBER_THREE + " " + Text.EXIT);
     }
 
-    public void ranMenu(){
+    public void runMenu(){
         int option = 0;
         do{
             showMenu();
@@ -28,15 +28,15 @@ public class Menu {
     }
 
     public void menuVehicles(){
-        System.out.println("¿Qué vehiculo desea agregar?");
-        System.out.println("1. model.Avion");
-        System.out.println("2. model.Yate");
-        System.out.println("3. model.Carro");
-        System.out.println("4. Salir");
+        System.out.println(Text.QUESTION_ADD_VEHICLE);
+        System.out.println(Text.NUMBER_ONE + " " + Text.PLANE);
+        System.out.println(Text.NUMBER_TWO + " " + Text.BOAT);
+        System.out.println(Text.NUMBER_THREE + " " + Text.CAR);
+        System.out.println(Text.NUMBER_FOUR + " " + Text.EXIT);
 
     }
 
-    public Vehicle ranMenuAddVehicle(){
+    public Vehicle runMenuAddVehicle(){
         int option = 0;
         Vehicle vehicle =null;
         do{
@@ -50,11 +50,11 @@ public class Menu {
     }
 
     public static void menuColor(){
-        System.out.println("1. " + Color.NEGRO);
-        System.out.println("2. " + Color.BLANCO);
-        System.out.println("3. " + Color.AZUL);
-        System.out.println("4. " + Color.VERDE);
-        System.out.println("5. " + Color.GRIS);
+        System.out.println(Text.NUMBER_ONE + " " + Color.NEGRO);
+        System.out.println(Text.NUMBER_TWO + " " + Color.BLANCO);
+        System.out.println(Text.NUMBER_THREE + " " + Color.AZUL);
+        System.out.println(Text.NUMBER_FOUR + " " + Color.VERDE);
+        System.out.println(Text.NUMBER_FIVE + " " + Color.GRIS);
     }
 
     public void chooseOperation(int option){
@@ -62,32 +62,25 @@ public class Menu {
             case 1:
                 Vehicle newVehicle = null;
                 if(!garage.isFullGarage()){
-                    System.out.println("Adicionando vehiculos");
-                    newVehicle=ranMenuAddVehicle();
+                    System.out.println(Text.ADDING_VEHICLES);
+                    newVehicle= runMenuAddVehicle();
                     garage.addVehicle(newVehicle);
 
 
                 }else{
-                    System.out.println(garage.MENSAJE_ERROR_GARAJE_LLENO);
+                    System.out.println(Text.MESSAGE_MISTAKE_FULL_GARAGE);
 
                 }
                 break;
             case 2:
-                //System.out.println("Mostrando vehiculos");
                 garage.showVehicles();
                 break;
             case 3:
-                System.out.println("Gracias por utilizar nuestra aplicación");
+                System.out.println(Text.GOODBYE);
                 break;
             default:
-                System.out.println("Opción no válida");
+                System.out.println(Text.INVALID_OPTION);
         }
 
     }
-
-
-
-
-
-
 }

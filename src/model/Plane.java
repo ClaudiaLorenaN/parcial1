@@ -1,32 +1,37 @@
 package model;
 
-import java.awt.*;
+import util.Text;
 
-public class Plane extends Vehicle {
+public class Plane extends Vehicle implements Cloneable{
 
     //propiedad
-    private final double altitudMaxima;
+    private final double maximumAltitude;
 
     //constructor
-    public Plane(String referencia, double velocidadMaxima, double altitudMaxima, Color color) {
-        super(referencia, velocidadMaxima, color);
-        this.altitudMaxima = altitudMaxima;
+    public Plane(String reference, double maximumSpeed, double maximumAltitude, Color color) {
+        super(reference, maximumSpeed, color);
+        this.maximumAltitude = maximumAltitude;
     }
 
-    public Plane(Vehicle vehicle, double altitudMaxima) {
+    public Plane(Vehicle vehicle, double maximumAltitude) {
         super(vehicle);
-        this.altitudMaxima = altitudMaxima;
+        this.maximumAltitude = maximumAltitude;
     }
 
     //getters
-    public double getAltitudMaxima() {
-        return altitudMaxima;
+    public double getMaximumAltitude() {
+        return maximumAltitude;
     }
 
     //sobreescritura toString
     @Override
     public String toString() {
-        return super.toString() +
-                " Altitud máxima: " + altitudMaxima;
+        return super.toString() + " " +
+                Text.MAXIMUM_ALTITUDE + ":" + " " + maximumAltitude;
+    }
+
+    @Override
+    protected Plane clone() {
+        return new Plane(this, this.maximumAltitude);
     }
 }
