@@ -3,50 +3,85 @@ package util;
 import exception.GarageException;
 import model.Vehicle;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class Garage {
+    LinkedHashSet<Vehicle> vehicles = new LinkedHashSet<>();
+    //private Vehicle[] vehicles = new Vehicle[NUMBER_MAXIMUM_VEHICLES];
 
-    public static final int NUMBER_MAXIMUM_VEHICLES = 10;
-    private Vehicle[] vehicles = new Vehicle[NUMBER_MAXIMUM_VEHICLES];
+    public Map<String, Vehicle> convertToMap(){
+        Map<String, Vehicle> mapVehicle = new HashMap<>();
 
+        for (Vehicle v : vehicles) {
+            if(v != null)
+            mapVehicle.put(v.getReference(), v);
+        }
+
+        return mapVehicle;
+    }
 
     public void addVehicle(Vehicle newVehicle) {
-        if (null != newVehicle){
-            if (isFullGarage()){
-                throw new GarageException(Text.MESSAGE_MISTAKE_FULL_GARAGE);
-            }
-            int spaceAvailable = findAvailableSpace();
-            vehicles[spaceAvailable] = newVehicle;
-        }
+        vehicles.add(newVehicle);
     }
 
 
     public void showVehicles(){
-        boolean empty = true;
+        Map<String, Vehicle> mapVehicle = convertToMap();
 
-        for(int i = 0; i< vehicles.length; i++){
-            if(vehicles[i] !=null){
-                System.out.println((i + 1) + ". " + vehicles[i]);
-                empty=false;
+            if(mapVehicle.isEmpty()){
+                System.out.println(Text.MESSAGE_MISTAKE_EMPTY_GARAGE);
+            }else{
+                mapVehicle.forEach((key, value) -> System.out.println("Vehículo: "+ key + " value: " + value));
+                //vehicles.forEach (vehicle -> System.out.println(vehicle));
             }
-        }
+    }
 
-        if (empty) {
+
+    public void showVehiclesHigherTopSpeed(){
+
+        if(vehicles.isEmpty()){
             System.out.println(Text.MESSAGE_MISTAKE_EMPTY_GARAGE);
+        }else{
+            Optional<Vehicle> maximunSpeed = vehicles.stream()
+                    .max((p1,p2)  ->  (int)p1.getMaximumSpeed() - (int)p2.getMaximumSpeed());
+
+            System.out.println("Maximum element: " + maximunSpeed);
+
+
         }
+
     }
 
+    public void showVehiclesLowerTopSpeed(){
 
-    public int findAvailableSpace(){
-        for(int i = 0; i< vehicles.length; i++){
-            if(vehicles[i] == null){
-                return i;
-            }
+        if(vehicles.isEmpty()){
+            System.out.println(Text.MESSAGE_MISTAKE_EMPTY_GARAGE);
+        }else{
+            Optional<Vehicle> minimunSpeed = vehicles.stream()
+                    .min((p1,p2)  ->  (int)p1.getMaximumSpeed() - (int)p2.getMaximumSpeed());
+
+            System.out.println("Minimum element: " + minimunSpeed);
+
         }
-        return -1;
+
     }
 
-    public boolean isFullGarage(){
-        return findAvailableSpace() == -1;
+    public void showOrderVehiclesByMaximumSpeed(){
+
+        if(vehicles.isEmpty()){
+            System.out.println(Text.MESSAGE_MISTAKE_EMPTY_GARAGE);
+        }else{
+            //Optional<Vehicle> OrderVehiclesByMaximumSpeed = vehicles.stream()
+                   // .sorted(Comparator.comparing(Vehicle::getMaximumSpeed))
+
+
+           //System.out.println("Minimun element: " + OrderVehiclesByMaximumSpeed);
+
+        }
+
+        //https://www.benchresources.net/how-to-sort-linkedhashset-contents-in-java/
+
     }
 
 

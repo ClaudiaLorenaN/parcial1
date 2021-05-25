@@ -6,6 +6,8 @@ import model.Vehicle;
 public class Menu {
 
     private final Garage garage = new Garage();
+    public static int counter = 0;
+    public static final int NUMBER_MAXIMUM_VEHICLES = 2;
 
     public void showMenu(){
 
@@ -13,7 +15,12 @@ public class Menu {
         System.out.println(Text.CHOOSE_OPTION);
         System.out.println(Text.NUMBER_ONE + " " + Text.ADD_VEHICLE);
         System.out.println(Text.NUMBER_TWO + " " + Text.SHOW_GARAGE);
-        System.out.println(Text.NUMBER_THREE + " " + Text.EXIT);
+        System.out.println(Text.NUMBER_THREE + " " + Text.FIND_CAR_HIGHER_TOP_SPEED); ///
+        System.out.println(Text.NUMBER_FOUR + " " + Text.FIND_CAR_LOWER_TOP_SPEED); ///
+        System.out.println(Text.NUMBER_FIVE + " " + Text.SORT_CARS_BY_MAXIMUM_SPEED_HIGHEST_TO_LOWEST); ///
+        System.out.println(Text.NUMBER_SIX + " " + Text.SHOW_CARS_BLACK); ///
+        System.out.println(Text.NUMBER_SEVEN + " " + Text.SHOW_REFERENCES_WHITE_CARS); ///
+        System.out.println(Text.NUMBER_EIGHT + " " + Text.EXIT);
     }
 
     public void runMenu(){
@@ -23,7 +30,7 @@ public class Menu {
             option = Validator.validateOption();
             chooseOperation(option);
 
-        }while(option !=3);
+        }while(option !=8); //cambio######################
 
     }
 
@@ -61,21 +68,33 @@ public class Menu {
         switch (option){
             case 1:
                 Vehicle newVehicle = null;
-                if(!garage.isFullGarage()){
+                if(counter >= NUMBER_MAXIMUM_VEHICLES){
+                    System.out.println(Text.MESSAGE_MISTAKE_FULL_GARAGE);
+
+                }else{
                     System.out.println(Text.ADDING_VEHICLES);
                     newVehicle= runMenuAddVehicle();
                     garage.addVehicle(newVehicle);
-
-
-                }else{
-                    System.out.println(Text.MESSAGE_MISTAKE_FULL_GARAGE);
-
+                    counter ++;
                 }
                 break;
             case 2:
                 garage.showVehicles();
                 break;
             case 3:
+                garage.showVehiclesHigherTopSpeed();
+                break;
+            case 4:
+                garage.showVehiclesLowerTopSpeed();
+                break;
+            case 5:
+                garage.showOrderVehiclesByMaximumSpeed();
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
                 System.out.println(Text.GOODBYE);
                 break;
             default:

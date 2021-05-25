@@ -9,8 +9,16 @@ public class Text {
     public static final String NUMBER_THREE ="3";
     public static final String NUMBER_FOUR ="4";
     public static final String NUMBER_FIVE ="5";
+    public static final String NUMBER_SIX ="6";
+    public static final String NUMBER_SEVEN ="7";
+    public static final String NUMBER_EIGHT ="8";
     public static final String ADD_VEHICLE = "Agregar vehículo";
     public static final String SHOW_GARAGE = "Mostrar garaje";
+    public static final String FIND_CAR_HIGHER_TOP_SPEED = "Encontrar el vehículo con la mayor velocidad máxima";
+    public static final String FIND_CAR_LOWER_TOP_SPEED = "Encontrar el vehículo con la menor velocidad máxima";
+    public static final String SORT_CARS_BY_MAXIMUM_SPEED_HIGHEST_TO_LOWEST = "Ordenar los vehículos por velocidad máxima (mayor a menor)";
+    public static final String SHOW_CARS_BLACK = "Mostrar vehículos de color NEGRO";
+    public static final String SHOW_REFERENCES_WHITE_CARS = "Mostrar las referencias de los vehículos de color BLANCO";
     public static final String EXIT = "Salir";
     public static final String QUESTION_ADD_VEHICLE = "¿Qué vehiculo desea agregar?";
     public static final String PLANE = "Avión";
