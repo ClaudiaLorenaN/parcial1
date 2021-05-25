@@ -2,7 +2,7 @@ package model;
 
 import util.Text;
 
-public class Vehicle {
+public class Vehicle{
 
     //Propiedades
     private final String reference;

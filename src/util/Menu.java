@@ -6,8 +6,6 @@ import model.Vehicle;
 public class Menu {
 
     private final Garage garage = new Garage();
-    public static int counter = 0;
-    public static final int NUMBER_MAXIMUM_VEHICLES = 2;
 
     public void showMenu(){
 
@@ -18,8 +16,8 @@ public class Menu {
         System.out.println(Text.NUMBER_THREE + " " + Text.FIND_CAR_HIGHER_TOP_SPEED); ///
         System.out.println(Text.NUMBER_FOUR + " " + Text.FIND_CAR_LOWER_TOP_SPEED); ///
         System.out.println(Text.NUMBER_FIVE + " " + Text.SORT_CARS_BY_MAXIMUM_SPEED_HIGHEST_TO_LOWEST); ///
-        System.out.println(Text.NUMBER_SIX + " " + Text.SHOW_CARS_BLACK); ///
-        System.out.println(Text.NUMBER_SEVEN + " " + Text.SHOW_REFERENCES_WHITE_CARS); ///
+        System.out.println(Text.NUMBER_SIX + " " + Text.SHOW_BLACK_OR_BLUE_CARS); ///
+        System.out.println(Text.NUMBER_SEVEN + " " + Text.SHOW_REFERENCES_WHITE_OR_GREEN_CARS); ///
         System.out.println(Text.NUMBER_EIGHT + " " + Text.EXIT);
     }
 
@@ -30,7 +28,7 @@ public class Menu {
             option = Validator.validateOption();
             chooseOperation(option);
 
-        }while(option !=8); //cambio######################
+        }while(option !=8);
 
     }
 
@@ -68,15 +66,14 @@ public class Menu {
         switch (option){
             case 1:
                 Vehicle newVehicle = null;
-                if(counter >= NUMBER_MAXIMUM_VEHICLES){
-                    System.out.println(Text.MESSAGE_MISTAKE_FULL_GARAGE);
-
-                }else{
+                if(!garage.isFullGarage()){
                     System.out.println(Text.ADDING_VEHICLES);
                     newVehicle= runMenuAddVehicle();
                     garage.addVehicle(newVehicle);
-                    counter ++;
+                }else{
+                    System.out.println(Text.MESSAGE_MISTAKE_FULL_GARAGE);
                 }
+
                 break;
             case 2:
                 garage.showVehicles();
@@ -91,8 +88,10 @@ public class Menu {
                 garage.showOrderVehiclesByMaximumSpeed();
                 break;
             case 6:
+                garage.showBlackOrBlueCars();
                 break;
             case 7:
+                garage.showReferencesWhiteOrGreenCars();
                 break;
             case 8:
                 System.out.println(Text.GOODBYE);

@@ -17,8 +17,8 @@ public class Text {
     public static final String FIND_CAR_HIGHER_TOP_SPEED = "Encontrar el vehículo con la mayor velocidad máxima";
     public static final String FIND_CAR_LOWER_TOP_SPEED = "Encontrar el vehículo con la menor velocidad máxima";
     public static final String SORT_CARS_BY_MAXIMUM_SPEED_HIGHEST_TO_LOWEST = "Ordenar los vehículos por velocidad máxima (mayor a menor)";
-    public static final String SHOW_CARS_BLACK = "Mostrar vehículos de color NEGRO";
-    public static final String SHOW_REFERENCES_WHITE_CARS = "Mostrar las referencias de los vehículos de color BLANCO";
+    public static final String SHOW_BLACK_OR_BLUE_CARS= "Mostrar vehículos de color NEGRO o AZUL";
+    public static final String SHOW_REFERENCES_WHITE_OR_GREEN_CARS = "Mostrar las referencias de los vehículos de color BLANCO o VERDE";
     public static final String EXIT = "Salir";
     public static final String QUESTION_ADD_VEHICLE = "¿Qué vehiculo desea agregar?";
     public static final String PLANE = "Avión";
